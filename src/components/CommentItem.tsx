@@ -10,7 +10,7 @@ import {
 } from "@vkontakte/vkui"
 import { Comment } from "../store/types"
 import DOMPurify from "dompurify"
-import ReactHtmlParser from "react-html-parser"
+import parse from "html-react-parser"
 import { Icon24ChevronDown, Icon24ChevronUp } from "@vkontakte/icons"
 import useFetchChildren from "../hooks/useFetchChildren"
 import ErrorMsg from "./ErrorMsg"
@@ -35,7 +35,7 @@ export const CommentItem: FC<{ comment: Comment }> = ({ comment }) => {
               <Title level="3" weight="2" style={{ marginBottom: 16 }}>
                 {by}
               </Title>
-              <Text>{ReactHtmlParser(DOMPurify.sanitize(text))}</Text>
+              <Text>{parse(DOMPurify.sanitize(text))}</Text>
               <Caption level="1" style={{ marginBottom: 16 }}>
                 {getDate(time)}
               </Caption>
