@@ -1,6 +1,5 @@
 import { View, SplitLayout, SplitCol } from "@vkontakte/vkui"
 import { useActiveVkuiLocation } from "@vkontakte/vk-mini-apps-router"
-
 import { Home, Story } from "./panels"
 import { DEFAULT_VIEW_PANELS } from "./routes"
 

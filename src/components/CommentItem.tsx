@@ -13,8 +13,8 @@ import DOMPurify from "dompurify"
 import parse from "html-react-parser"
 import { Icon24ChevronDown, Icon24ChevronUp } from "@vkontakte/icons"
 import useFetchChildren from "../hooks/useFetchChildren"
-import ErrorMsg from "./ErrorMsg"
 import { getDate } from "../utils"
+import { ErrorMsg } from "./ErrorMsg"
 
 export const CommentItem: FC<{ comment: Comment }> = ({ comment }) => {
   const { text, by, time, kids, deleted } = comment

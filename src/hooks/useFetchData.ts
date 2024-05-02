@@ -20,6 +20,7 @@ function useFetchData<ResponseType>(ids: number[] | undefined) {
         setData(result)
       } catch (err) {
         if (err instanceof TypeError) setError(err.message)
+        else setError("Something went wrong")
       } finally {
         setIsLoading(false)
       }

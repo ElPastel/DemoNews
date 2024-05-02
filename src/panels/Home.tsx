@@ -16,9 +16,8 @@ import { Story } from "../store/types"
 import { Icon20RefreshOutline } from "@vkontakte/icons"
 import useFetchData from "../hooks/useFetchData"
 import { useGetNewsIdsQuery } from "../store/services/newsApi"
-import ErrorMsg from "../components/ErrorMsg"
 import { getDate } from "../utils"
-
+import { ErrorMsg } from "../components"
 export interface HomeProps extends NavIdProps {}
 
 export const Home: FC<HomeProps> = ({ id }) => {
@@ -67,9 +66,11 @@ export const Home: FC<HomeProps> = ({ id }) => {
           </CellButton>
         </Div>
 
-        <CardGrid size="l">
+        <CardGrid className="card" size="l">
           {stories?.map((story) => (
             <ContentCard
+              hasHover={true}
+              hoverMode="background"
               key={story?.id}
               onClick={() => routeNavigator.push(`story/${story?.id}`)}
               subtitle={`Rating: ${story?.score || 0}`}

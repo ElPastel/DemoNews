@@ -1,3 +1,5 @@
+import { FC } from "react"
+
 import { Icon16ErrorCircleFill } from "@vkontakte/icons"
 import { Card, Div, Text } from "@vkontakte/vkui"
 
@@ -6,7 +8,7 @@ interface ErrorMsg {
   type: "comments" | "news" | "story"
 }
 
-export default function ErrorMsg({ error, type }: ErrorMsg) {
+export const ErrorMsg: FC<ErrorMsg> = ({ error, type }) => {
   return (
     <Div>
       <Card mode="outline-tint">

@@ -19,17 +19,13 @@ import { Comment } from "../store/types"
 import { Icon24RefreshOutline } from "@vkontakte/icons"
 import { CommentItem } from "../components/CommentItem"
 import useFetchData from "../hooks/useFetchData"
-import ErrorMsg from "../components/ErrorMsg"
 import { getDate } from "../utils"
+import { ErrorMsg, Loader } from "../components"
 
 export const Story: FC<NavIdProps> = ({ id }) => {
   const [isRefresh, setIsRefresh] = useState(false)
   const routeNavigator = useRouteNavigator()
   const params = useParams<"id">()
-
-  useEffect(() => {
-    if (params?.id && isNaN(Number(params?.id))) routeNavigator.replace("/")
-  }, [params, routeNavigator])
 
   const {
     data: ids,
@@ -44,21 +40,13 @@ export const Story: FC<NavIdProps> = ({ id }) => {
     isLoading: isLoadingComments,
   } = useFetchData<Comment>(ids?.kids)
 
-  if (isLoadingStory)
-    return (
-      <div
-        aria-busy={true}
-        aria-live="polite"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          flexDirection: "column",
-          margin: "40px auto",
-        }}
-      >
-        <Spinner size="large" />
-      </div>
-    )
+  useEffect(() => {
+    if (params?.id && isNaN(Number(params?.id))) {
+      routeNavigator.replace("*")
+    }
+  }, [params, routeNavigator])
+
+  if (isLoadingStory) return <Loader />
 
   return (
     <Panel id={id}>
